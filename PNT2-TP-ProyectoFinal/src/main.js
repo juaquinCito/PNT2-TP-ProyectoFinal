@@ -1,5 +1,18 @@
 import { createApp } from 'vue'
-import './style.css'
+import { createPinia } from 'pinia'
+
 import App from './App.vue'
 
-createApp(App).mount('#app')
+//import router from './router'
+//import Dialog from 'primevue/dialog';
+
+//import './style.css'
+//import 'bootstrap'
+//import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+createApp(App)
+    .component('Dialog', Dialog)
+    .use(createPinia())
+    .use(router)
+    .mount('#app')
