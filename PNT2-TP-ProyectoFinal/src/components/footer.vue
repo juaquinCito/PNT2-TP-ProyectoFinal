@@ -1,20 +1,21 @@
+<script>
+  export default {
+  
+  }
+  </script>
+
 <template>
     <footer>
+        
       <p>Centro de Depilacion los Tilos</p>
 
       <li><a href="/terms-and-conditions">Términos y Condiciones</a></li>
       <li><a href="/privacy-policy">Política de Privacidad</a></li>
       <li><a href="/copyrights">Copyrights</a></li>
-      
+     
     </footer>
   </template>
-  
-  <script>
-  export default {
-  
-  }
-  </script>
-  
+    
   <style>
   
       footer {

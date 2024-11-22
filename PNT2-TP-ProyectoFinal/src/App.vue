@@ -9,5 +9,4 @@ import { storeToRefs } from "pinia";
 
 <style scoped>
 
-
 </style>
