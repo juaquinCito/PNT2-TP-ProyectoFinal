@@ -1,7 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { useLoginStore } from '../stores/login';
-import LoginView from '../views/LoginView.vue';
 
+// componentes de vistas
+import LoginView from '../views/LoginView.vue';
+import MyTurnsView from `../views/MyTurnsView.vue`;
+import EditView from `../views/EditView.vue`;
+import HomeView from `../views/HomeView.vue`;
+import FormularioView from `../views/FormularioView.vue`;
+import ContactUsView from `../views/ContactUsView.vue`;
+import NotFoundView from `../views/NotFoundView.vue`;
+import AboutUsView from `../views/AboutUsView.vue`;
+import Carrito from `../components/Carrito.vue`;
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,46 +21,46 @@ const router = createRouter({
       component: LoginView,
     },
     {
-      path: '',
-      name: '',
-      component: MyTurns,
+      path: '/myTurns',
+      name: 'myTurns',
+      component: MyTurnsView,
       meta: { RequireAuth: true },
     },
     {
-      path: '',
-      name: '',
-      component: Edit,
+      path: '/myTurns/:id',
+      name: 'myTurns',
+      component: EditView,
       meta: { RequireAuth: true },
     },
     {
-      path: '',
-      name: '',
+      path: '/home',
+      name: 'home',
       component: HomeView,
     },
     {
-      path: '',
-      name: '',
-      component: Formulario,
+      path: '/booking',
+      name: 'booking',
+      component: FormularioView,
       meta: { RequireAuth: true },
     },
     {
-      path: '',
-      name: '',
-      component: AboutUs,
+      path: '/contactus',
+      name: 'contactus',
+      component: ContactUsView,
     },
     {
-      path: '',
-      name: '',
-      component: ContactUs,
-    },
-    {
-      path: '',
+      path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      component: NotFound,
+      component: NotFoundView,
     },
     {
-      path: '',
-      name: '',
+      path: '/aboutus',
+      name: 'aboutus',
+      component: AboutUsView,
+    },
+    {
+      path: '/carrito',
+      name: 'carrito',
       component: Carrito,
       meta: { RequireAuth: true },
     },
