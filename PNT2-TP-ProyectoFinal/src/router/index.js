@@ -12,6 +12,7 @@ import NotFoundView from `../views/NotFoundView.vue`;
 import AboutUsView from `../views/AboutUsView.vue`;
 import Carrito from `../components/Carrito.vue`;
 
+// Instancia router y las rutas
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
