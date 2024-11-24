@@ -1,5 +1,7 @@
-# Vue 3 + Vite
-
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+Aplicacion para solicitar turnos de depilacion definitiva:
+Observaciones: 
+1. Se separa la instanciacion del router y las rutas; en una carpeta especifica.
+2. Se separan los componentes segun sus funcionalidades, se hace una carpeta de vistas, para los componentes que generan diferentes vistas.
+3. Se genera una carpeta de servicios, donde se llama a la a API de persistencia (https://mockapi.io/)
+4. Por el momento solo se persisten usuarios y turnos.
+5. Se utiliza una carpeta para los store´s, por si eventualmente hubiese mas de uno.
