@@ -1,17 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { useLoginStore } from '../stores/login';
-
 // componentes de vistas
 import LoginView from '../views/LoginView.vue';
-import MyTurnsView from `../views/MyTurnsView.vue`;
-import EditView from `../views/EditView.vue`;
-import HomeView from `../views/HomeView.vue`;
-import FormularioView from `../views/FormularioView.vue`;
-import ContactUsView from `../views/ContactUsView.vue`;
-import NotFoundView from `../views/NotFoundView.vue`;
-import AboutUsView from `../views/AboutUsView.vue`;
-import Carrito from `../components/Carrito.vue`;
-
+import MyTurnsView from '../views/MyTurnsView.vue';
+import HomeView from '../views/HomeView.vue';
+import FormularioView from '../views/FormularioView.vue';
+import AboutUsView from '../views/AboutUsView.vue';
+import EditView from '../views/EditView.vue';
+import ContactUsView from '../views/ContactUsView.vue';
+import NotFound from '../views/NotFound.vue';
+import { useLoginStore } from '../stores/login';
 // Instancia router y las rutas
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,7 +26,7 @@ const router = createRouter({
     },
     {
       path: '/myTurns/:id',
-      name: 'myTurns',
+      name: 'myTurn',
       component: EditView,
       meta: { RequireAuth: true },
     },
@@ -45,6 +42,11 @@ const router = createRouter({
       meta: { RequireAuth: true },
     },
     {
+      path: '/aboutus',
+      name: 'aboutus',
+      component: AboutUsView,
+    },
+    {
       path: '/contactus',
       name: 'contactus',
       component: ContactUsView,
@@ -52,23 +54,11 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      component: NotFoundView,
+      component: NotFound,
     },
-    {
-      path: '/aboutus',
-      name: 'aboutus',
-      component: AboutUsView,
-    },
-    {
-      path: '/carrito',
-      name: 'carrito',
-      component: Carrito,
-      meta: { RequireAuth: true },
-    },
-
-
   ],
 });
+
 router.beforeEach((to, from, next) => {
   const store = useLoginStore();
   if (to.matched.some((record) => record.meta.RequireAuth) && !store.isLogin) {
