@@ -1,6 +1,6 @@
-<script setup>
-import { storeToRefs } from "pinia";
+<script >
 import {useLoginStore} from './stores/login'
+import { storeToRefs } from "pinia";
 
 export default {
      setup() {
@@ -9,10 +9,12 @@ export default {
       const { isLogin, user } = storeToRefs(store)
       return {isLogin, user, havePermissions}
     }
+    
 }
 </script>
 
 <template>
+ 
       <RouterLink to="/"></RouterLink>
       <RouterLink to="/home"></RouterLink>
       <RouterLink v-if="isLogin" to="/myTurns"></RouterLink>  
@@ -20,7 +22,7 @@ export default {
   <RouterView />
 </template>
 
-<style scoped>
+<style >
   @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
   
   body{
