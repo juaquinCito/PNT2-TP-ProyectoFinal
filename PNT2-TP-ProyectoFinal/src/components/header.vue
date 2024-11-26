@@ -2,18 +2,19 @@
 import { storeToRefs } from 'pinia';
 import { useLoginStore } from '../stores/login';
 
-export default{
-    setup(){
-        const { logout } = useLoginStore(); 
+export default {
+    setup() {
+        // Aca paso el store para obtener la reactividad de este
+        const { logout } = useLoginStore();
         const store = useLoginStore()
         const { isLogin } = storeToRefs(store)
         return { isLogin: isLogin.value, logout }
     },
     methods: {
-        navigate(value){
+        navigate(value) {
             this.$router.push(value)
         },
-        logout(){
+        logout() {
             this.logout()
             this.isLogin = false;
             this.$router.push('/home')
@@ -29,34 +30,48 @@ export default{
 </script>
 
 <template>
-  <header>
-      <span class="btn">Centro de Depilacion los Tilos</span>
+    <header>
+        <span class="btn">Centro de Depilacion los Tilos</span>
 
-      <div id="sidemenu">
-          <button class="sidemenu__btn" v-on:click="navOpen = !navOpen" v-bind:class="{ active: navOpen }">
-              <span class="top"></span>
-              <span class="mid"></span>
-              <span class="bottom"></span>
-          </button>
-          <transition name="translateX">
-              <nav v-show="navOpen">
-                  <div class="sidemenu__wrapper">
-                      <ul class="sidemenu__list">
-                          <li @click="navigate('/home')" class="sidemenu__item"><a>Inicio</a></li>
-                          <li @click="navigate('/booking')" v-if="isLogin" class="sidemenu__item"><a>Reservar</a></li>
-                          <li @click="navigate('/myTurns')" v-if="isLogin" class="sidemenu__item"><a>Mis Turnos</a></li>
-                          <li @click="navigate('/contactus')" class="sidemenu__item"><a>Contáctenos</a></li>
-                          <li @click="navigate('/aboutus')" class="sidemenu__item"><a>Nosotros</a></li>
-                          <li @click="logout()" v-if="isLogin" class="sidemenu__item"><a>Log Out</a></li>
-                          <li @click="navigate('/')" v-if="!isLogin" class="sidemenu__item"><a>Login</a></li>
-                      </ul>
-                  </div>
-              </nav>
-          </transition>
-      </div>
+        <div id="sidemenu">
+            <button class="sidemenu__btn" v-on:click="navOpen = !navOpen" v-bind:class="{ active: navOpen }">
+                <span class="top"></span>
+                <span class="mid"></span>
+                <span class="bottom"></span>
+            </button>
+            <transition name="translateX">
+                <nav v-show="navOpen">
+                    <div class="sidemenu__wrapper">
+                        <ul class="sidemenu__list">
+                            <router-link to="/home" class="sidemenu__item">
+                                <a>Inicio</a>
+                            </router-link>
+                            <router-link to="/booking" v-if="isLogin" class="sidemenu__item">
+                                <a>Reservar</a>
+                            </router-link>
+                            <router-link to="/myTurns" v-if="isLogin" class="sidemenu__item">
+                                <a>Mis Turnos</a>
+                            </router-link>
+                            <router-link to="/contactus" class="sidemenu__item">
+                                <a>Contáctenos</a>
+                            </router-link>
+                            <router-link to="/aboutus" class="sidemenu__item">
+                                <a>Nosotros</a>
+                            </router-link>
+                            <li @click="logout()" v-if="isLogin" class="sidemenu__item">
+                                <a>Log Out</a>
+                            </li>
+                            <router-link to="/" v-if="!isLogin" class="sidemenu__item">
+                                <a>Login</a>
+                            </router-link>
+                        </ul>
+                    </div>
+                </nav>
+            </transition>
+        </div>
 
 
-  </header>
+    </header>
 </template>
 
 <style scoped>
@@ -76,47 +91,54 @@ ul li {
     cursor: pointer;
 }
 
-.btn{
-cursor:pointer;
-	position:relative;
-	padding:10px 20px;
-	background:white;
-	font-size:28px;
-	border-top-right-radius:10px;
-	border-bottom-left-radius:10px;
-	transition:all 1s;
-	&:after,&:before{
-		content:" ";
-		width:10px;
-		height:10px;
-		position:absolute;
-		border :0px solid #fff;
-		transition:all 1s;
-		}
-	&:after{
-		top:-1px;
-		left:-1px;
-		border-top:5px solid black;
-		border-left:5px solid black;
-	}
-	&:before{
-		bottom:-1px;
-		right:-1px;
-		border-bottom:5px solid black;
-		border-right:5px solid black;
-	}
-	&:hover{
-		border-top-right-radius:0px;
-	border-bottom-left-radius:0px;
-		 background:rgba(0,0,0,.5);
-		 color:white;
-		&:before,&:after{
-			
-			width:100%;
-			height:100%;
-			 border-color:white;
-		}
-	}
+.btn {
+    cursor: pointer;
+    position: relative;
+    padding: 10px 20px;
+    background: white;
+    font-size: 28px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    transition: all 1s;
+
+    &:after,
+    &:before {
+        content: " ";
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        border: 0px solid #fff;
+        transition: all 1s;
+    }
+
+    &:after {
+        top: -1px;
+        left: -1px;
+        border-top: 5px solid black;
+        border-left: 5px solid black;
+    }
+
+    &:before {
+        bottom: -1px;
+        right: -1px;
+        border-bottom: 5px solid black;
+        border-right: 5px solid black;
+    }
+
+    &:hover {
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+        background: rgba(0, 0, 0, .5);
+        color: white;
+
+        &:before,
+        &:after {
+
+            width: 100%;
+            height: 100%;
+            border-color: white;
+        }
+    }
 }
 
 
@@ -136,8 +158,8 @@ cursor:pointer;
     background: transparent;
     border: none;
     position: absolute;
-    top:30px;
-    left:30px;
+    top: 30px;
+    left: 30px;
     z-index: 100;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -223,5 +245,4 @@ cursor:pointer;
     transform: translateX(-200px);
     opacity: 0;
 }
-
 </style>

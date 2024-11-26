@@ -14,7 +14,6 @@ export default {
 </script>
 
 <template>
- 
       <RouterLink to="/"></RouterLink>
       <RouterLink to="/home"></RouterLink>
       <RouterLink v-if="isLogin" to="/myTurns"></RouterLink>  
