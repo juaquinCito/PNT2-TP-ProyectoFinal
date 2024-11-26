@@ -159,7 +159,7 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("https://decosalud.com/wp-content/uploads/2019/12/Mostrador-CLINICA-DENTAL.jpg");
+  background-image: url("../assets/fondo2.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
